@@ -17,9 +17,9 @@
                 <ion-input-password-toggle slot="end"></ion-input-password-toggle>
               </ion-input>
             </ion-item>
-            <ion-button color="dark" fill="clear" size="full">olvidé mi contraseña</ion-button>
-            <ion-button color="primary" size="full">Iniciar Sesión</ion-button>
-            <ion-button color="success" fill="clear" size="full">Registrarse</ion-button>
+            <ion-button color="dark" fill="clear" size="full" [routerLink]="['/recuperar']">olvidé mi contraseña</ion-button>
+            <ion-button color="primary" size="full" [routerLink]="['/tienda']">Iniciar Sesión</ion-button>
+            <ion-button color="success" fill="clear" size="full" [routerLink]="['/registro']">Registrarse</ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>
