@@ -1,13 +1,50 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>registro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div style="height: 170px;"></div> <!-- Espaciador -->
+
+<ion-content>
+  <div>
+    <form>
+      <ion-grid class="center-content">
+        <ion-card class="white ">
+          <ion-row>
+            <ion-col size="12">
+              <ion-item lines="full">
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" id="inputNombre" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item lines="full">
+                <ion-label position="floating">Apellido</ion-label>
+                <ion-input type="text" id="inputApellido" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item lines="full">
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="text" id="inputEmail"required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item lines="full">
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" id="inputPasword"required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-button type="submit" color="danger" expand="block">Registrarse</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-grid>
+    </form>
+  </div>
 </ion-content>
