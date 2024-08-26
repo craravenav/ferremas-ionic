@@ -23,3 +23,13 @@
     justify-content: flex-start; /* Alinea a la izquierda */
     padding: 1px;
   }
+
+.body{
+    background-color: rgb(39, 39, 39);
+    background-image: url("../../../assets/img/background2.png");
+    background-repeat: repeat;
+}
+
+.rounded-div {
+    border-radius: 10px; /* Ajusta el valor según el radio deseado */
+  }
