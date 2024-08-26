@@ -14,7 +14,7 @@ export class RegistroPage {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private alertController: AlertController // Corrige la inyección del alertController
+    private alertController: AlertController
   ) {
     this.registerForm = this.formBuilder.group({
       Nombre: ['', Validators.required],
@@ -43,5 +43,9 @@ export class RegistroPage {
     });
 
     await alert.present();
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }
