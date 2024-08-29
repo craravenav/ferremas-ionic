@@ -1,35 +1,22 @@
-.white{
-    background-color: white;
-}
-
-.content-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150%;
-  }
-  
-  ion-card {
-    width: 95%;
-  }
-
-.center-content form {
-  max-width: 500px; /* Ajusta el ancho según lo necesites */
-  width: 100%;
-}
-
-.center-content {
-    display: flex;
-    justify-content: flex-start; /* Alinea a la izquierda */
-    padding: 1px;
-  }
-
 .body{
     background-color: rgb(39, 39, 39);
     background-image: url("../../../assets/img/background2.png");
     background-repeat: repeat;
 }
 
-.rounded-div {
-    border-radius: 10px; /* Ajusta el valor según el radio deseado */
-  }
+h2{
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ion-toolbar {
+  --min-height: 70px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+
+.title{
+  padding-right: 20px;
+}
