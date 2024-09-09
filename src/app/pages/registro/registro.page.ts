@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { customPasswordValidator } from '../../custom-validators';
 
 @Component({
   selector: 'app-registro',
@@ -20,7 +21,7 @@ export class RegistroPage {
       Nombre: ['', Validators.required],
       Apellido: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      Password: ['', Validators.required]
+      Password: ['', [Validators.required, customPasswordValidator()]]
     });
   }
 
@@ -28,7 +29,9 @@ export class RegistroPage {
   async register() {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
-      this.router.navigate(['/login'], { queryParams: { registrationSuccess: 'true' }, queryParamsHandling: 'merge' });
+      // Limpia el formulario después del registro
+      this.registerForm.reset();
+      this.router.navigate(['/login'], { queryParams: { registrationSuccess: 'true' }});
     } else {
       // Si el formulario no es válido, muestra una alerta
       await this.showErrorAlert();
@@ -38,7 +41,7 @@ export class RegistroPage {
   async showErrorAlert() {
     const alert = await this.alertController.create({
       header: 'Error en el Registro',
-      message: 'Todos los campos son obligatorios.',
+      message: 'Todos los campos son obligatorios y la contraseña debe Tener (4 números + 3 caracteres + 1 mayuscula)',
       buttons: ['OK']
     });
 

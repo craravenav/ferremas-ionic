@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="body flex-center">
+  <div class="body flex-center fade-in">
     <ion-grid>
       <ion-row>
         <ion-col size="12">
@@ -10,15 +10,35 @@
             
             <ion-card-content>
               <h2>Ingresa tus credenciales</h2>
-              <form>
-
-                <ion-input labelPlacement="floating" label="Correo Electrónico" fill="solid" mode="md" type="email" placeholder="asd@gmail.com" required></ion-input>
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <ion-input 
+                  labelPlacement="floating" 
+                  label="Correo Electrónico" 
+                  fill="solid" 
+                  mode="md" 
+                  type="email" 
+                  placeholder="asd@gmail.com" 
+                  formControlName="email"
+                  required
+                ></ion-input>
                 <br>
-                <ion-input labelPlacement="floating" label="Contraseña" fill="solid"  mode="md" type="password" placeholder="********" required>
+                <ion-input 
+                  labelPlacement="floating" 
+                  label="Contraseña" 
+                  fill="solid"  
+                  mode="md" 
+                  type="password" 
+                  placeholder="********" 
+                  formControlName="password"
+                  required
+                >
                   <ion-input-password-toggle slot="end"></ion-input-password-toggle>
                 </ion-input>
-
-                <ion-button color="dark" fill="clear" size="full" [routerLink]="['/recuperar']">olvidó su contraseña?</ion-button>
+                <ion-note *ngIf="loginForm.get('password')?.hasError('customPassword') && loginForm.get('password')?.touched" color="danger">
+                  La contraseña debe cumplir con los requisitos de seguridad.
+                </ion-note>
+                <br>
+                <ion-button color="dark" fill="clear" size="full" [routerLink]="['/recuperar']">Olvidó su contraseña?</ion-button>
                 <ion-button expand="block" color="primary" type="submit" size="full">Iniciar Sesión</ion-button>
               </form>
 
@@ -30,4 +50,3 @@
     </ion-grid>
   </div>
 </ion-content>
-

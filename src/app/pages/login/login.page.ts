@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { customPasswordValidator } from '../../custom-validators';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +10,22 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  loginForm!: FormGroup;
   data: any;
 
   constructor(
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private alertController: AlertController
   ) {}
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, customPasswordValidator()]]
+    });
+
     // Obtiene los parámetros de consulta
     this.route.queryParams.subscribe(params => {
       this.data = params;
@@ -49,4 +58,25 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+
+  async login() {
+    if (this.loginForm.valid) {
+      // Aquí puedes implementar la lógica para iniciar sesión
+      console.log('Formulario de inicio de sesión válido');
+    } else {
+      // Si el formulario no es válido, muestra una alerta
+      await this.showErrorAlert();
+    }
+  }
+
+  async showErrorAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error en el Inicio de Sesión',
+      message: 'Todos los campos son obligatorios y la contraseña debe cumplir con los requisitos.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
+
