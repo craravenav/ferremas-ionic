@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonModal, AnimationController } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
+import { IonModal, AnimationController, MenuController, ToastController } from '@ionic/angular';
 import { Animation } from '@ionic/core';
 
 @Component({
@@ -14,16 +14,15 @@ export class TiendaPage implements AfterViewInit {
 
   email!: string;
   password!: string;
+  usuario!: string;
 
-  constructor(private router: Router, private animationCtrl: AnimationController) {
+  constructor(private router: Router, private animationCtrl: AnimationController, private menuCtrl: MenuController, private toastController: ToastController) {
     // Obtiene los datos del estado de navegación si existen
     if (this.router.getCurrentNavigation()?.extras.state) {
       const datosUsuario = this.router.getCurrentNavigation()?.extras.state;
       this.email = datosUsuario?.['email'];
       this.password = datosUsuario?.['password'];
-
-      console.log('Email:', this.email);
-      console.log('Password:', this.password);
+      this.usuario = datosUsuario?.['usuario'];
     }
   }
 
@@ -79,5 +78,41 @@ export class TiendaPage implements AfterViewInit {
     if (this.modal) {
       this.modal.dismiss();
     }
+  }
+
+  goToLogin() {
+    this.menuCtrl.close();
+    this.router.navigate(['/login']);
+  }
+
+  goToCarrito() {
+    const navigationExtras: NavigationExtras = { 
+      state: {
+        email: this.email,
+        password: this.password,
+        usuario: this.usuario
+      }
+    };
+    this.menuCtrl.close();
+    this.router.navigate(['/carrito'],navigationExtras);
+  }
+
+  openSideCategoria() {
+    this.menuCtrl.open('side-categoria');
+  }
+
+  openSideUsuario() {
+    this.menuCtrl.open('side-usuario');
+  }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'Producto agregado correctamente',
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+    this.closeModal();
   }
 }  

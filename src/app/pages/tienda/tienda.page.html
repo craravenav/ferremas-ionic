@@ -1,24 +1,270 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>tienda</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Side Menu de Categorías -->
+<ion-menu menuId="side-categoria" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="warning">
+      <ion-title style="color:white">Categorías</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>CONSTRUCCIÓN</ion-label>
+        </ion-item>
+        <div class="subcategorias" slot="content">ÁNGULOS</div>
+        <div class="subcategorias" slot="content">FIJACIONES</div>
+        <div class="subcategorias" slot="content">ADHESIVOS</div>
+        <div class="subcategorias" slot="content">CLAVOS</div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>HERRAMIENTAS DE MANO</ion-label>
+        </ion-item>
+        <div class="subcategorias" slot="content">SERRUCHOS</div>
+        <div class="subcategorias" slot="content">SIERRAS</div>
+        <div class="subcategorias" slot="content">MARTILLOS Y MAZOS</div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="light">
+          <ion-label>HERRAMIENTAS ELÉCTRICAS</ion-label>
+        </ion-item>
+        <div class="subcategorias" slot="content">SIERRAS</div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-content>
+</ion-menu>
 
-<ion-content [fullscreen]="true">
-    
-  <h4>Bienvenido, {{ email }}</h4>
-  <ion-button id="modal-trigger">Present Modal</ion-button>
-  <ion-modal trigger="modal-trigger" #modal>
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Modal</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="closeModal()">Close</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding"> Modal Content </ion-content>
-    </ng-template>
-  </ion-modal>
-</ion-content>
+<!-- Side Menu Usuario -->
+<ion-menu side="end" menuId="side-usuario" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title style="color:white">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-item>
+      <ion-label><strong>Hola!, {{ usuario }}</strong></ion-label>
+    </ion-item>
+    <ion-button expand="block" (click)="goToLogin()">Cerrar Sesión</ion-button>
+  </ion-content>
+</ion-menu>
+
+<!-- Contenido Principal de la App -->
+<div class="ion-page" id="main-content">
+  <!-- Navbar correspondiente a logo, carrito y busqueda -->
+  <ion-header>
+    <ion-toolbar class="NavHeader" color="primary">
+      <!-- Logo FERREMAS -->
+      <ion-buttons slot="start">
+        <img src="assets/img/ferremas_logo.svg" alt="Ferremas_logo" width="70%">
+      </ion-buttons>
+      <!-- Carrito Compra -->
+      <ion-buttons class="iconoCarrito" slot="end" (click)="goToCarrito()">
+        <mat-icon>shopping_cart</mat-icon>
+      </ion-buttons>
+      <!-- Usuario -->
+      <ion-buttons class="iconoUsuario" slot="end" (click)="openSideUsuario()">
+        <mat-icon>account_circle</mat-icon>
+      </ion-buttons>
+    </ion-toolbar>
+    <!-- Barra de busqueda de productos -->
+    <ion-toolbar color="primary">
+      <ion-searchbar class="NavbarSearch" animated="true" placeholder="Buscar Producto" ></ion-searchbar>
+    </ion-toolbar>
+    <!-- Subheader -->
+    <ion-toolbar class="NavbarCategorias">
+      <div class="container">
+        <ion-grid>
+          <ion-row>
+            <!-- Sidenav para las categorías -->
+            <button mat-raised-button class="botonCategorias" (click)="openSideCategoria()">Categorías</button>
+            <!-- Boton que limpiará filtros de busqueda -->
+            <button mat-raised-button class="botonTodos">Todos los Productos</button>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+<!-- Contenido principal -->
+  <ion-content [fullscreen]="true">
+      
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="producto-card">
+          <ion-thumbnail>
+            <img src="assets/img/productos/AMOLADORA_840W.jpg">
+          </ion-thumbnail>
+          <ion-label class="lblNombreProducto">
+            <ion-text color="dark"><strong>Amoladora 840W</strong></ion-text>          
+          </ion-label>
+          <ion-grid class="producto-cuerpo">
+            <ion-row class="ion-justify-content-between ion-align-items-center">
+              <ion-col>
+                <ion-text class="precio">
+                  <strong>$24.990</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col class="align-right">
+                <ion-text class="addCarrito">
+                  <ion-button size="small" id="modal-producto"><mat-icon>add_shopping_cart</mat-icon></ion-button>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="producto-card">
+          <ion-thumbnail>
+            <img src="assets/img/productos/SIERRA_CIRCULAR_MAN_1800W.jpg">
+          </ion-thumbnail>
+          <ion-label class="lblNombreProducto">
+            <ion-text color="dark"><strong>Sierra Circular 1800W</strong></ion-text>          
+          </ion-label>
+          <ion-grid class="producto-cuerpo">
+            <ion-row class="ion-justify-content-between ion-align-items-center">
+              <ion-col>
+                <ion-text class="precio">
+                  <strong>$44.990</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col class="align-right">
+                <ion-text class="addCarrito">
+                  <ion-button size="small" id="modal-producto"><mat-icon>add_shopping_cart</mat-icon></ion-button>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="producto-card">
+          <ion-thumbnail>
+            <img src="assets/img/productos/HORMIGON_PREPARADO_25KG.jpg">
+          </ion-thumbnail>
+          <ion-label class="lblNombreProducto">
+            <ion-text color="dark"><strong>Hormigon Prep. 25KG</strong></ion-text>          
+          </ion-label>
+          <ion-grid class="producto-cuerpo">
+            <ion-row class="ion-justify-content-between ion-align-items-center">
+              <ion-col>
+                <ion-text class="precio">
+                  <strong>$4.990</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col class="align-right">
+                <ion-text class="addCarrito">
+                  <ion-button size="small" id="modal-producto"><mat-icon>add_shopping_cart</mat-icon></ion-button>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="producto-card">
+          <ion-thumbnail>
+            <img src="assets/img/productos/MORTERO_REPARADOR_25KG.jpg">
+          </ion-thumbnail>
+          <ion-label class="lblNombreProducto">
+            <ion-text color="dark"><strong>Mortero Rep. 25KG</strong></ion-text>          
+          </ion-label>
+          <ion-grid class="producto-cuerpo">
+            <ion-row class="ion-justify-content-between ion-align-items-center">
+              <ion-col>
+                <ion-text class="precio">
+                  <strong>$2.990</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col class="align-right">
+                <ion-text class="addCarrito">
+                  <ion-button size="small" id="modal-producto"><mat-icon>add_shopping_cart</mat-icon></ion-button>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="producto-card">
+          <ion-thumbnail>
+            <img src="assets/img/productos/SOPLADOR_DE_AIRE_600W.jpg">
+          </ion-thumbnail>
+          <ion-label class="lblNombreProducto">
+            <ion-text color="dark"><strong>Soplador de Aire 600W</strong></ion-text>          
+          </ion-label>
+          <ion-grid class="producto-cuerpo">
+            <ion-row class="ion-justify-content-between ion-align-items-center">
+              <ion-col>
+                <ion-text class="precio">
+                  <strong>$25.990</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col class="align-right">
+                <ion-text class="addCarrito">
+                  <ion-button size="small" id="modal-producto"><mat-icon>add_shopping_cart</mat-icon></ion-button>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="producto-card">
+          <ion-thumbnail>
+            <img src="assets/img/productos/ADHESIVO_ESTRUCTURAL_PU_40.jpg">
+          </ion-thumbnail>
+          <ion-label class="lblNombreProducto">
+            <ion-text color="dark"><strong>Adhesivo Estructural</strong></ion-text>          
+          </ion-label>
+          <ion-grid class="producto-cuerpo">
+            <ion-row class="ion-justify-content-between ion-align-items-center">
+              <ion-col>
+                <ion-text class="precio">
+                  <strong>$1.990</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col class="align-right">
+                <ion-text class="addCarrito">
+                  <ion-button size="small" id="modal-producto"><mat-icon>add_shopping_cart</mat-icon></ion-button>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+
+    <!-- Producto -->
+    <ion-modal trigger="modal-producto" #modal>
+      <ng-template>
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-buttons slot="end">
+              <ion-button (click)="closeModal()" color="dark"><mat-icon>close</mat-icon></ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <img src="assets/img/productos/AMOLADORA_840W.jpg" class="bg">
+          <ion-item lines="none">
+            <ion-label>
+              <ion-text color="dark" class="detalleProductoTitulo"><strong>Amoladora 840W</strong></ion-text>
+              <p class="detalleProductoDescripcion">Amoladora Makita con interruptor tipo largo y ajuste natural, estructura delgada a la izquierda y la mano derecha para facilitar el manejo. </p>
+              <p class="detalleProductoPrecio" color="dark"><strong>$24.990</strong></p>
+            </ion-label>
+
+          </ion-item>
+        </ion-content>
+        <ion-footer class="ion-align-items-center">
+          <ion-button size="large" expand="block" color="primary" (click)="presentToast('bottom')">
+            <span><mat-icon>shopping_basket</mat-icon>  Añadir al Carrito</span>
+          </ion-button>
+        </ion-footer>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
+</div>

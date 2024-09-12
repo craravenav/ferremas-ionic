@@ -1,15 +1,84 @@
-<ion-header>
-    <ion-toolbar color="dark">
-      <ion-buttons slot="start">
-        <ion-button (click)="goToHome()">
-            <ion-icon name="storefront-outline"></ion-icon>
-        </ion-button>
+<!-- Side Menu de Categorías -->
+<ion-menu menuId="side-categoria" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="warning">
+      <ion-title style="color:white">Categorías</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>CONSTRUCCIÓN</ion-label>
+        </ion-item>
+        <div class="subcategorias" slot="content">ÁNGULOS</div>
+        <div class="subcategorias" slot="content">FIJACIONES</div>
+        <div class="subcategorias" slot="content">ADHESIVOS</div>
+        <div class="subcategorias" slot="content">CLAVOS</div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>HERRAMIENTAS DE MANO</ion-label>
+        </ion-item>
+        <div class="subcategorias" slot="content">SERRUCHOS</div>
+        <div class="subcategorias" slot="content">SIERRAS</div>
+        <div class="subcategorias" slot="content">MARTILLOS Y MAZOS</div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="light">
+          <ion-label>HERRAMIENTAS ELÉCTRICAS</ion-label>
+        </ion-item>
+        <div class="subcategorias" slot="content">SIERRAS</div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-content>
+</ion-menu>
+
+<!-- Side Menu Usuario -->
+<ion-menu side="end" menuId="side-usuario" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title style="color:white">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-item>
+      <ion-label><strong>Hola!, {{ usuario }}</strong></ion-label>
+    </ion-item>
+    <ion-button expand="block" (click)="goToLogin()">Cerrar Sesión</ion-button>
+  </ion-content>
+</ion-menu>
+
+<!-- Contenido Principal de la App -->
+<div class="ion-page" id="main-content">
+  <!-- Navbar correspondiente a logo, carrito y busqueda -->
+  <ion-header>
+    <ion-toolbar class="NavHeader" color="primary">
+      <!-- Logo FERREMAS -->
+      <ion-buttons slot="start" (click)="goToTienda()">
+        <img src="assets/img/ferremas_logo.svg" alt="Ferremas_logo" width="70%">
       </ion-buttons>
-      <ion-buttons slot="end">
-        <div class="title">
-          <img src="assets/img/ferremas_logo_corto.svg" alt="Ferremas_logo" height="50%">
-        </div>
+      <!-- Carrito Compra -->
+      <ion-buttons class="iconoCarrito" slot="end" (click)="goToCarrito()">
+        <mat-icon>shopping_cart</mat-icon>
       </ion-buttons>
+      <!-- Usuario -->
+      <ion-buttons class="iconoUsuario" slot="end" (click)="openSideUsuario()">
+        <mat-icon>account_circle</mat-icon>
+      </ion-buttons>
+    </ion-toolbar>
+    <!-- Subheader -->
+    <ion-toolbar class="NavbarCategorias">
+      <div class="container">
+        <ion-grid>
+          <ion-row>
+            <!-- Sidenav para las categorías -->
+            <button mat-raised-button class="botonCategorias" (click)="openSideCategoria()">Categorías</button>
+            <!-- Boton que limpiará filtros de busqueda -->
+            <button mat-raised-button class="botonTodos" (click)="goToTienda()">Todos los Productos</button>
+          </ion-row>
+        </ion-grid>
+      </div>
     </ion-toolbar>
   </ion-header>
   
@@ -18,7 +87,6 @@
       <ion-grid>
         <ion-row>
           <ion-col size="12">
-            <ion-card>
               <ion-card-header>
                 <h2>Carro de Compras</h2>
               </ion-card-header>
@@ -28,23 +96,23 @@
                 <ion-list>
                   <ion-item>
                     <ion-thumbnail slot="start">
-                      <img src="assets/img/image-1741af7c109a4de1ac59f4e7f18130cf.webp" alt="Producto 1">
+                      <img src="assets/img/productos/AMOLADORA_840W.jpg" alt="Producto 1">
                     </ion-thumbnail>
                     <ion-label>
-                      <h3>Producto 1</h3>
-                      <p>Descripción del producto 1</p>
-                      <p>Precio: $10.00</p>
+                      <h3>Amoladora 840W</h3>
+                      <p>Descripción del producto...</p>
+                      <p>Precio: $24.990</p>
                     </ion-label>
                     <ion-button slot="end" color="danger">Eliminar</ion-button>
                   </ion-item>
                   <ion-item>
                     <ion-thumbnail slot="start">
-                      <img src="assets\img\71ePVCGlMnL._AC_SL1500_.jpg" alt="Producto 2">
+                      <img src="assets/img/productos/HORMIGON_PREPARADO_25KG.jpg" alt="Producto 2">
                     </ion-thumbnail>
                     <ion-label>
-                      <h3>Producto 2</h3>
-                      <p>Descripción del producto 2</p>
-                      <p>Precio: $20.00</p>
+                      <h3>Hormigon Preparado 25kg</h3>
+                      <p>Descripción del producto...</p>
+                      <p>Precio: $4.990</p>
                     </ion-label>
                     <ion-button slot="end" color="danger">Eliminar</ion-button>
                   </ion-item>
@@ -57,15 +125,14 @@
                     <h3>Resumen del Carro</h3>
                   </ion-card-header>
                   <ion-card-content>
-                    <p>Total: $30.00</p>
+                    <p>Total: $29.980</p>
                     <ion-button expand="full" color="primary">Proceder al Pago</ion-button>
                   </ion-card-content>
                 </ion-card>
               </ion-card-content>
-            </ion-card>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
   </ion-content>
-  
+</div>

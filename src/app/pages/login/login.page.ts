@@ -34,9 +34,11 @@ export class LoginPage implements OnInit{
       console.log('Formulario de inicio de sesión válido');
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
+      const usuario = email.split('@')[0];
 
       const navigationExtras: NavigationExtras = {
         state: {
+          usuario: usuario,
           email: email,
           password: password
         }

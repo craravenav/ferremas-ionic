@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-carrito',
@@ -8,25 +9,53 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class CarritoPage {
 
-  constructor(private router: Router) { }
+  email!: string;
+  password!: string;
+  usuario!: string;
 
-  goToHome() {
-    const navigationExtras: NavigationExtras = {
-      state: {
-        // Aquí puedes incluir cualquier dato que quieras pasar a la página de inicio
-        message: 'Bienvenido de vuelta al inicio',
-        cartItems: this.getCartItems() // Ejemplo de datos del carrito
-      }
-    };
-
-    this.router.navigate(['/tienda'], navigationExtras);
+  constructor(private router: Router, private menuCCtrl: MenuController) {
+    // Obtiene los datos del estado de navegación si existen
+    if (this.router.getCurrentNavigation()?.extras.state) {
+      const datosUsuario = this.router.getCurrentNavigation()?.extras.state;
+      this.email = datosUsuario?.['email'];
+      this.password = datosUsuario?.['password'];
+      this.usuario = datosUsuario?.['usuario'];
+    }
   }
 
-  getCartItems() {
-    // Lógica para obtener los artículos del carrito
-    return [
-      { id: 1, name: 'Producto 1', price: 10 },
-      { id: 2, name: 'Producto 2', price: 20 }
-    ];
+  goToCarrito() {
+    const navigationExtras: NavigationExtras = { 
+      state: {
+        email: this.email,
+        password: this.password,
+        usuario: this.usuario
+      }
+    };
+    this.router.navigate(['/carrito'],navigationExtras);
+  }
+
+  openSideCategoria() {
+    this.menuCCtrl.open('side-categoria');
+  }
+
+  goToLogin() {
+    this.menuCCtrl.close();
+    this.router.navigate(['/login']);
+  }
+
+  openSideUsuario() {
+    this.menuCCtrl.open('side-usuario');
+  }
+
+  goToTienda() {
+    const navigationExtras: NavigationExtras = { 
+      state: {
+        email: this.email,
+        password: this.password,
+        usuario: this.usuario
+      }
+    };
+    this.menuCCtrl.close();
+    this.router.navigate(['/tienda'], navigationExtras);
   }
 }
