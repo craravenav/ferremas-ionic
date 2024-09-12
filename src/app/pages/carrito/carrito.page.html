@@ -1,13 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>carrito</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">carrito</ion-title>
+<ion-header>
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-button (click)="goToHome()">
+            <ion-icon name="storefront-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <div class="title">
+          <img src="assets/img/ferremas_logo_corto.svg" alt="Ferremas_logo" height="50%">
+        </div>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  
+  <ion-content [fullscreen]="true">
+    <div class="body flex-center fade-in">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card>
+              <ion-card-header>
+                <h2>Carro de Compras</h2>
+              </ion-card-header>
+              
+              <ion-card-content>
+                <!-- Lista de Productos en el Carro -->
+                <ion-list>
+                  <ion-item>
+                    <ion-thumbnail slot="start">
+                      <img src="assets/img/image-1741af7c109a4de1ac59f4e7f18130cf.webp" alt="Producto 1">
+                    </ion-thumbnail>
+                    <ion-label>
+                      <h3>Producto 1</h3>
+                      <p>Descripción del producto 1</p>
+                      <p>Precio: $10.00</p>
+                    </ion-label>
+                    <ion-button slot="end" color="danger">Eliminar</ion-button>
+                  </ion-item>
+                  <ion-item>
+                    <ion-thumbnail slot="start">
+                      <img src="assets\img\71ePVCGlMnL._AC_SL1500_.jpg" alt="Producto 2">
+                    </ion-thumbnail>
+                    <ion-label>
+                      <h3>Producto 2</h3>
+                      <p>Descripción del producto 2</p>
+                      <p>Precio: $20.00</p>
+                    </ion-label>
+                    <ion-button slot="end" color="danger">Eliminar</ion-button>
+                  </ion-item>
+                  <!-- Añadir más productos aquí -->
+                </ion-list>
+  
+                <!-- Resumen del Carro -->
+                <ion-card>
+                  <ion-card-header>
+                    <h3>Resumen del Carro</h3>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <p>Total: $30.00</p>
+                    <ion-button expand="full" color="primary">Proceder al Pago</ion-button>
+                  </ion-card-content>
+                </ion-card>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+  
