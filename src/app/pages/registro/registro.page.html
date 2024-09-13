@@ -25,14 +25,35 @@
             
             <ion-card-content>
               <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <!-- Campo de Nombre -->
                 <ion-input labelPlacement="floating" label="Nombre" fill="solid" mode="md" type="text" formControlName="Nombre"></ion-input>
+                <!-- Validación para Nombre -->
+                <div *ngIf="hasNombreError()">
+                  <p>El nombre no puede contener números ni caracteres especiales.</p>
+                </div>
+                
                 <br>
+
+                <!-- Campo de Apellido -->
                 <ion-input labelPlacement="floating" label="Apellido" fill="solid" mode="md" type="text" formControlName="Apellido"></ion-input>
+                <!-- Validación para Apellido -->
+                <div *ngIf="hasApellidoError()">
+                  <p>El apellido no puede contener números ni caracteres especiales.</p>
+                </div>
+                
                 <br>
+
+                <!-- Campo de Email -->
                 <ion-input labelPlacement="floating" label="Correo Electrónico" fill="solid" mode="md" type="email" formControlName="Email" placeholder="asd@gmail.com" required></ion-input>
+                
                 <br>
-                <ion-input labelPlacement="floating" label="Contraseña" fill="solid"  mode="md" type="password" formControlName="Password" required></ion-input>
+
+                <!-- Campo de Contraseña -->
+                <ion-input labelPlacement="floating" label="Contraseña" fill="solid" mode="md" type="password" formControlName="Password" required></ion-input>
+                
                 <br>
+
+                <!-- Botón de Crear Cuenta -->
                 <ion-button type="submit" color="primary" expand="block" size="full">Crear Cuenta</ion-button>
               </form>
             </ion-card-content>
@@ -43,4 +64,6 @@
     </ion-grid>
   </div>
 </ion-content>
+
+
 
