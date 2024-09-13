@@ -13,6 +13,7 @@ import { customPasswordValidator } from '../../custom-validators';
 export class LoginPage implements OnInit{
   loginForm!: FormGroup;
   data: any;
+  estado!:boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,9 +25,19 @@ export class LoginPage implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, customPasswordValidator()]]
     });
+
+    if (this.router.getCurrentNavigation()?.extras.state) {
+      const estado = this.router.getCurrentNavigation()?.extras.state;
+      this.estado = estado?.['estadoRegistro'];
+      console.log(this.estado)
+      if(this.estado){
+        this.alertRegistro();
+      }
+    }
   }
 
   ngOnInit() {
+    
   }
 
   async login() {
@@ -54,6 +65,16 @@ export class LoginPage implements OnInit{
     const alert = await this.alertController.create({
       header: 'Error en el Inicio de Sesión',
       message: 'Todos los campos son obligatorios y la contraseña debe cumplir con los requisitos.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async alertRegistro() {
+    const alert = await this.alertController.create({
+      header: 'Usuario Registrado Exitosamente',
+      message: 'Favor ingrese sus credenciales para acceder a la aplicación.',
       buttons: ['OK']
     });
 
