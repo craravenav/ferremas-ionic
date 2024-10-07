@@ -38,7 +38,43 @@ const routes: Routes = [
   {
     path: 'recuperar',
     loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarPageModule)
+  },  {
+    path: 'producto-add',
+    loadChildren: () => import('./services/producto/producto-add/producto-add.module').then( m => m.ProductoAddPageModule)
   },
+  {
+    path: 'producto-edit',
+    loadChildren: () => import('./services/producto/producto-edit/producto-edit.module').then( m => m.ProductoEditPageModule)
+  },
+  {
+    path: 'producto-all',
+    loadChildren: () => import('./services/producto/producto-all/producto-all.module').then( m => m.ProductoAllPageModule)
+  },
+  {
+    path: 'marca-add',
+    loadChildren: () => import('./services/marca/marca-add/marca-add.module').then( m => m.MarcaAddPageModule)
+  },
+  {
+    path: 'marca-all',
+    loadChildren: () => import('./services/marca/marca-all/marca-all.module').then( m => m.MarcaAllPageModule)
+  },
+  {
+    path: 'marca-edit',
+    loadChildren: () => import('./services/marca/marca-edit/marca-edit.module').then( m => m.MarcaEditPageModule)
+  },
+  {
+    path: 'categoria-add',
+    loadChildren: () => import('./services/categoria/categoria-add/categoria-add.module').then( m => m.CategoriaAddPageModule)
+  },
+  {
+    path: 'categoria-edit',
+    loadChildren: () => import('./services/categoria/categoria-edit/categoria-edit.module').then( m => m.CategoriaEditPageModule)
+  },
+  {
+    path: 'categoria-all',
+    loadChildren: () => import('./services/categoria/categoria-all/categoria-all.module').then( m => m.CategoriaAllPageModule)
+  },
+
 ];
 
 @NgModule({
