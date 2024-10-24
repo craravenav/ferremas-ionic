@@ -1,22 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Checkout</ion-title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMv2H9l9oQsfyvrh1JCje4dfighHPAeq4"></script>
+<!-- Contenido Principal -->
+<ion-content id="main-content" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Camila</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-  </ion-toolbar>
-</ion-header>
+  <ion-card>
+    <img alt="Silhouette of mountains" src="assets/img/ferremas_logo.svg" />
+    <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
 
-<ion-content>
-  <div style="height: 100%;">
-    <google-map 
-      height="100%" 
-      width="100%" 
-      [center]="center" 
-      [zoom]="zoom" 
-      [options]="options">
-    </google-map>
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Contenedor para el mapa -->
+  <div id="container">
+    <strong>Mapa</strong>
+    <p>Ubicación actual</p>
+    <div id="map" class="map-container"></div>
   </div>
-</ion-content>
 
+  <!-- Botón para redirigir al carrito -->
+  <ion-button expand="block" (click)="goToCarrito()">Ir al Carrito</ion-button>
+</ion-content>
 
 
