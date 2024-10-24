@@ -1,9 +1,12 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'ferremas',
-  webDir: 'www'
+  appId: 'io.ionic.starter', // Ajusta según tu configuración
+  appName: 'Ferremas',
+  webDir: 'www',
+  bundledWebRuntime: false,
 };
 
 export default config;
+
+

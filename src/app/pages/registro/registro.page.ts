@@ -3,6 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { customPasswordValidator } from '../../custom-validators';
+import { AuthService } from 'src/app/services/auth.service'; // Importa el servicio de autenticación
 
 @Component({
   selector: 'app-registro',
@@ -12,11 +13,11 @@ import { customPasswordValidator } from '../../custom-validators';
 export class RegistroPage {
   registerForm: FormGroup;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService // Inyecta el servicio de autenticación
   ) {
     this.registerForm = this.formBuilder.group({
       Nombre: ['', [Validators.required, this.validarCaracter]],
@@ -35,12 +36,13 @@ export class RegistroPage {
     return null;
   }
 
-  // Métodos para obtener los errores en Nombre y Apellido
+  // Método para verificar si hay un error en el campo "Nombre"
   hasNombreError() {
     const control = this.registerForm.get('Nombre');
     return control && control.hasError('invalidCharacters') && control.touched;
   }
 
+  // Método para verificar si hay un error en el campo "Apellido"
   hasApellidoError() {
     const control = this.registerForm.get('Apellido');
     return control && control.hasError('invalidCharacters') && control.touched;
@@ -50,31 +52,48 @@ export class RegistroPage {
   async register() {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
-      const registroEstado = true;
-      const navigationExtras: NavigationExtras = {
-        state: {
-          estadoRegistro: registroEstado,
-        }
-      };
-      // Limpia el formulario después del registro
-      this.registerForm.reset();
-      this.router.navigate(['/login'], navigationExtras);
+      const registrado = await this.authService.registrarUsuario(
+        formData.Nombre,
+        formData.Apellido,
+        formData.Email,
+        formData.Password
+      );
+
+      if (registrado) {
+        await this.showSuccessAlert();
+        this.router.navigate(['/login']);
+      } else {
+        await this.showErrorAlert('Error al registrar el usuario.');
+      }
     } else {
       // Si el formulario no es válido, muestra una alerta
-      await this.showErrorAlert();
+      await this.showErrorAlert('Todos los campos son obligatorios y la contraseña debe tener (4 números + 3 caracteres + 1 mayúscula)');
     }
   }
 
-  async showErrorAlert() {
+  // Mostrar alerta de éxito
+  async showSuccessAlert() {
     const alert = await this.alertController.create({
-      header: 'Error en el Registro',
-      message: 'Todos los campos son obligatorios y la contraseña debe Tener (4 números + 3 caracteres + 1 mayuscula)',
+      header: 'Registro Exitoso',
+      message: 'El usuario ha sido registrado con éxito.',
       buttons: ['OK']
     });
 
     await alert.present();
   }
 
+  // Mostrar alerta de error
+  async showErrorAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Error en el Registro',
+      message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  // Función para ir a la página de Login
   goToLogin() {
     this.router.navigate(['/login']);
   }
