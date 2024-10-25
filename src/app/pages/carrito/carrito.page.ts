@@ -58,4 +58,16 @@ export class CarritoPage {
     this.menuCCtrl.close();
     this.router.navigate(['/tienda'], navigationExtras);
   }
+
+  goToCheckout() {
+    const navigationExtras: NavigationExtras = { 
+      state: {
+        email: this.email,
+        password: this.password,
+        usuario: this.usuario
+      }
+    };
+    this.menuCCtrl.close();
+    this.router.navigate(['/checkout'], navigationExtras);
+  }
 }

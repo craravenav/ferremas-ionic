@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { IonModal, AnimationController, MenuController, ToastController } from '@ionic/angular';
 import { Animation } from '@ionic/core';
+import { AuthService } from 'src/app/services/auth.service'; // Importa el servicio de autenticación
 
 @Component({
   selector: 'app-tienda',
@@ -16,7 +17,13 @@ export class TiendaPage implements AfterViewInit {
   password!: string;
   usuario!: string;
 
-  constructor(private router: Router, private animationCtrl: AnimationController, private menuCtrl: MenuController, private toastController: ToastController) {
+  constructor(
+    private router: Router,
+    private animationCtrl: AnimationController,
+    private menuCtrl: MenuController,
+    private toastController: ToastController,
+    private authService: AuthService // Inyecta el servicio de autenticación
+  ) {
     // Obtiene los datos del estado de navegación si existen
     if (this.router.getCurrentNavigation()?.extras.state) {
       const datosUsuario = this.router.getCurrentNavigation()?.extras.state;
@@ -27,6 +34,7 @@ export class TiendaPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.cargarDatosUsuario(); // Llama a la función para cargar los datos del usuario
     if (this.modal) {
       const enterAnimation = (baseEl: HTMLElement) => {
         const root = baseEl.shadowRoot || baseEl;
@@ -74,6 +82,14 @@ export class TiendaPage implements AfterViewInit {
     }
   }
 
+  cargarDatosUsuario() {
+    // Obtiene el usuario autenticado desde el servicio de autenticación
+    const usuarioActual = this.authService.getUsuarioActual();
+    if (usuarioActual) {
+      this.usuario = `${usuarioActual.nombre} ${usuarioActual.apellido}`; // Asigna el nombre y apellido a la variable `usuario`
+    }
+  }
+
   closeModal() {
     if (this.modal) {
       this.modal.dismiss();
@@ -81,6 +97,7 @@ export class TiendaPage implements AfterViewInit {
   }
 
   goToLogin() {
+    this.authService.cerrarSesion(); // Cierra la sesión al navegar al login
     this.menuCtrl.close();
     this.router.navigate(['/login']);
   }
@@ -94,7 +111,7 @@ export class TiendaPage implements AfterViewInit {
       }
     };
     this.menuCtrl.close();
-    this.router.navigate(['/carrito'],navigationExtras);
+    this.router.navigate(['/carrito'], navigationExtras);
   }
 
   openSideCategoria() {
@@ -115,4 +132,5 @@ export class TiendaPage implements AfterViewInit {
     await toast.present();
     this.closeModal();
   }
-}  
+}
+ 

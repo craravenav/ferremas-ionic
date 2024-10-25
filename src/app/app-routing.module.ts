@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/guards/auth.guard'; // Importamos el AuthGuard
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
   {
     path: '',
     redirectTo: 'loader',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'loader',
@@ -18,18 +19,6 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-  },
-  {
-    path: 'tienda',
-    loadChildren: () => import('./pages/tienda/tienda.module').then(m => m.TiendaPageModule)
-  },
-  {
-    path: 'carrito',
-    loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoPageModule)
-  },
-  {
-    path: 'checkout',
-    loadChildren: () => import('./pages/checkout/checkout.module').then(m => m.CheckoutPageModule)
   },
   {
     path: 'registro',
@@ -78,12 +67,28 @@ const routes: Routes = [
   {
     path: 'producto-list',
     loadChildren: () => import('./services/producto/producto-list/producto-list.module').then( m => m.ProductoListPageModule)
-  },  {
+  },
+  {
     path: 'producto-delete',
     loadChildren: () => import('./services/producto/producto-delete/producto-delete.module').then( m => m.ProductoDeletePageModule)
   },
 
 
+  {
+    path: 'tienda',
+    loadChildren: () => import('./pages/tienda/tienda.module').then(m => m.TiendaPageModule),
+    canActivate: [AuthGuard] // Protección de ruta con el guard
+  },
+  {
+    path: 'carrito',
+    loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoPageModule),
+    canActivate: [AuthGuard] // Protección de ruta con el guard
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./pages/checkout/checkout.module').then(m => m.CheckoutPageModule),
+    canActivate: [AuthGuard] // Protección de ruta con el guard
+  },
 ];
 
 @NgModule({

@@ -7,10 +7,11 @@
             <ion-card-header>
               <img src="assets/img/ferremas_logo-2.svg" alt="Ferremas_logo" width="100%">
             </ion-card-header>
-            
+
             <ion-card-content>
               <h2>Ingresa tus credenciales</h2>
               <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <!-- Campo de Correo Electrónico -->
                 <ion-input 
                   labelPlacement="floating" 
                   label="Correo Electrónico" 
@@ -18,10 +19,12 @@
                   mode="md" 
                   type="email" 
                   placeholder="asd@gmail.com" 
-                  formControlName="email"
-                  required
-                ></ion-input>
+                  formControlName="Email"
+                  required>
+                </ion-input>
                 <br>
+
+                <!-- Campo de Contraseña -->
                 <ion-input 
                   labelPlacement="floating" 
                   label="Contraseña" 
@@ -29,19 +32,25 @@
                   mode="md" 
                   type="password" 
                   placeholder="********" 
-                  formControlName="password"
-                  required
-                >
+                  formControlName="Password"
+                  required>
                   <ion-input-password-toggle slot="end"></ion-input-password-toggle>
                 </ion-input>
-                <ion-note *ngIf="loginForm.get('password')?.hasError('customPassword') && loginForm.get('password')?.touched" color="danger">
+                
+                <!-- Validación de contraseña -->
+                <ion-note *ngIf="loginForm.get('Password')?.hasError('customPassword') && loginForm.get('Password')?.touched" color="danger">
                   La contraseña debe cumplir con los requisitos de seguridad.
                 </ion-note>
                 <br>
+
+                <!-- Botón de recuperación de contraseña -->
                 <ion-button color="dark" fill="clear" size="full" [routerLink]="['/recuperar']">Olvidó su contraseña?</ion-button>
+
+                <!-- Botón de Iniciar Sesión -->
                 <ion-button expand="block" color="primary" type="submit" size="full">Iniciar Sesión</ion-button>
               </form>
 
+              <!-- Botón de registro -->
               <ion-button color="success" fill="clear" size="full" [routerLink]="['/registro']">Registrarse</ion-button>
             </ion-card-content>
           </ion-card>
