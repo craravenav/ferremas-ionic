@@ -29,7 +29,6 @@ export class LoginPage implements OnInit{
     if (this.router.getCurrentNavigation()?.extras.state) {
       const estado = this.router.getCurrentNavigation()?.extras.state;
       this.estado = estado?.['estadoRegistro'];
-      console.log(this.estado)
       if(this.estado){
         this.alertRegistro();
       }
@@ -42,7 +41,7 @@ export class LoginPage implements OnInit{
 
   async login() {
     if (this.loginForm.valid) {
-      console.log('Formulario de inicio de sesión válido');
+
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
       const usuario = email.split('@')[0];

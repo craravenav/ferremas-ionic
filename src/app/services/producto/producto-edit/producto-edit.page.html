@@ -1,13 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>producto-edit</ion-title>
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToProductoList()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <div class="title">
+        <img src="assets/img/ferremas_logo_corto.svg" alt="Ferremas_logo" height="50%">
+      </div>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">producto-edit</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="body fade-in">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <h2>Editar Producto</h2>
+            </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
+                <ion-item>
+                  <ion-label position="floating">Nombre</ion-label>
+                  <ion-input type="text" [(ngModel)]="producto.nombre" formControlName="producto_nombre"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Descripción</ion-label>
+                  <ion-textarea [(ngModel)]="producto.descripcion" formControlName="producto_descripcion"></ion-textarea>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Precio</ion-label>
+                  <ion-input type="number" [(ngModel)]="producto.precio" formControlName="producto_precio"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Imagen</ion-label>
+                  <ion-input type="text" [(ngModel)]="producto.imagen" formControlName="producto_imagen"></ion-input>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label position="floating">Marca</ion-label>
+                  <ion-select formControlName="producto_marca">
+                    <ion-select-option *ngFor="let marca of marcas" [value]="marca.id">{{ marca.nombre }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                
+                <ion-item>
+                  <ion-label position="floating">Categoría</ion-label>
+                  <ion-select formControlName="producto_categoria">
+                    <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Stock</ion-label>
+                  <ion-input type="number" [(ngModel)]="producto.stock" formControlName="producto_stock"></ion-input>
+                </ion-item>
+                <ion-button type="submit" color="primary" expand="block"
+                  [disabled]="!productForm.valid">Submit</ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+

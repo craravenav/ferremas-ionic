@@ -1,134 +1,134 @@
 {
-    "productos": [
-        {
-            "id": 1,
-            "nombre": "HORMIGON PREPARADO 25KG",
-            "descripcion": "Topex Hormigón Preparado 25 kg es una mezcla de áridos y cemento ideal para la construcción de radieres, sobrelosas, entradas de autos y pilares.",
-            "precio": 2990,
-            "imagen":"assets/img/productos/HORMIGON_PREPARADO_25KG.jpg",
-            "categoria_id": 2,
-            "marca_id": 2,
-            "stock":100
-        },
-        {
-            "id": 2,
-            "nombre": "MORTERO REPARADOR 25KG",
-            "descripcion": "El mortero de reparación Topex de 25 kg es un compuesto especializado diseñado para reparaciones en hormigón y albañilería, combinando cemento, áridos y aditivos para ofrecer un rendimiento superior. Este producto se destaca por su alta impermeabilidad y resistencia mecánica, características esenciales para garantizar la durabilidad y estabilidad de las estructuras reparadas. Su capacidad tixotrópica y autosoportante permite una fácil aplicación vertical, lo que lo hace ideal para trabajar en superficies de paredes y otras áreas elevadas sin necesidad de encofrados adicionales.",
-            "precio": 3990,
-            "imagen":"assets/img/productos/MORTERO_REPARADOR_25KG.jpg",
-            "categoria_id": 2,
-            "marca_id": 2,
-            "stock":100
-        },
-        {
-            "id": 3,
-            "nombre": "SELLADOR MULTIUSO 1KG PLAVICON",
-            "descripcion": "SELLADOR MULTIUSO 1KG PLAVICON.",
-            "precio": 2990,
-            "imagen":"assets/img/productos/SELLADOR_MULTIUSO_1KG_PLAVICON.jpg",
-            "categoria_id": 2,
-            "marca_id": 4,
-            "stock":100
-        },
-        {
-            "id": 4,
-            "nombre": "ADHESIVO P PISOS 10 KG CENT",
-            "descripcion": "ADHESIVO P PISOS 10 KG CENTAURO",
-            "precio": 14990,
-            "imagen":"assets/img/productos/ADHESIVO_P_PISOS_10_KG_CENT.jpg",
-            "categoria_id": 3,
-            "marca_id": 5,
-            "stock":100
-        },
-        {
-            "id": 5,
-            "nombre": "TANQUE BOTELLON 2000 LT POLIETILENO",
-            "descripcion": "TANQUE BOTELLON 2000 LT POLIETILENO",
-            "precio": 14990,
-            "imagen":"assets/img/productos/TANQUE_BOTELLON_2000_LT_POLIETILENO.jpg",
-            "categoria_id": 2,
-            "marca_id": 3,
-            "stock":100
-        },
-        {
-            "id": 6,
-            "nombre": "TALADRO ATORNILLADOR A BATERIA 12V",
-            "descripcion": "TALADRO ATORNILLADOR A BATERIA 12V",
-            "precio": 29990,
-            "imagen":"assets/img/productos/TALADRO_ATORNILLADOR_A_BATERIA_12V.jpg",
-            "categoria_id": 1,
-            "marca_id": 1,
-            "stock":100
-        },
-        {
-            "id": 7,
-            "nombre": "AMOLADORA 840W",
-            "descripcion": "AMOLADORA 840W",
-            "precio": 24990,
-            "imagen":"assets/img/productos/AMOLADORA_840W.jpg",
-            "categoria_id": 1,
-            "marca_id": 1,
-            "stock":100
-        },
-        {
-            "id": 8,
-            "nombre": "SOPLADOR DE AIRE 600W",
-            "descripcion": "SOPLADOR DE AIRE 600W",
-            "precio": 19990,
-            "imagen":"assets/img/productos/SOPLADOR_DE_AIRE_600W.jpg",
-            "categoria_id": 1,
-            "marca_id": 1,
-            "stock":100
-        },
-        {
-            "id": 9,
-            "nombre": "SIERRA CIRCULAR MAN 1800W",
-            "descripcion": "SIERRA CIRCULAR MAN 1800W",
-            "precio": 49990,
-            "imagen":"assets/img/productos/SIERRA_CIRCULAR_MAN_1800W.jpg",
-            "categoria_id": 1,
-            "marca_id": 1,
-            "stock":100
-        }
-    ],
-    "marca": [
-        {
-            "id":1,
-            "nombre":"MAKITA"
-        },
-        {
-            "id":2,
-            "nombre":"TOPEX"
-        },
-        {
-            "id":3,
-            "nombre":"GENERICO"
-        },
-        {
-            "id":4,
-            "nombre":"PLAVICON"
-        },
-        {
-            "id":5,
-            "nombre":"CENTAURO"
-        },
-        {
-            "id":6,
-            "nombre":"WURTH"
-        }
-    ],
-    "categoria": [
-        {
-            "id":1,
-            "nombre":"HERRAMIENTAS"
-        },
-        {
-            "id":2,
-            "nombre":"CONSTRUCCION"
-        },
-        {
-            "id":3,
-            "nombre":"ADHESIVO"
-        }
-    ]
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "HORMIGON PREPARADO 25KG",
+      "descripcion": "Topex Hormigón Preparado 25 kg es una mezcla de áridos y cemento ideal para la construcción de radieres, sobrelosas, entradas de autos y pilares.",
+      "precio": 2990,
+      "imagen": "https://ferreteriatacama.cl/wp-content/uploads/2021/05/hormigon4.jpg",
+      "categoria_id": "2",
+      "marca_id": "2",
+      "stock": 100
+    },
+    {
+      "id": "2",
+      "nombre": "MORTERO REPARADOR 25KG",
+      "descripcion": "El mortero de reparación Topex de 25 kg es un compuesto especializado diseñado para reparaciones en hormigón y albañilería, combinando cemento, áridos y aditivos para ofrecer un rendimiento superior. Este producto se destaca por su alta impermeabilidad y resistencia mecánica, características esenciales para garantizar la durabilidad y estabilidad de las estructuras reparadas. Su capacidad tixotrópica y autosoportante permite una fácil aplicación vertical, lo que lo hace ideal para trabajar en superficies de paredes y otras áreas elevadas sin necesidad de encofrados adicionales.",
+      "precio": 3990,
+      "imagen": "https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/sodimacCL/3307360_01/w=800,h=800,fit=pad",
+      "categoria_id": "2",
+      "marca_id": "2",
+      "stock": 100
+    },
+    {
+      "id": "3",
+      "nombre": "SELLADOR MULTIUSO 1KG PLAVICON",
+      "descripcion": "SELLADOR MULTIUSO 1KG PLAVICON.",
+      "precio": 2990,
+      "imagen": "https://tse3.mm.bing.net/th?id=OIP.zQ48SblfQdKwgez77Y_3IQHaJg&pid=Api&P=0&h=180",
+      "categoria_id": "2",
+      "marca_id": "4",
+      "stock": 100
+    },
+    {
+      "id": "4",
+      "nombre": "ADHESIVO P PISOS 10 KG CENT",
+      "descripcion": "ADHESIVO P PISOS 10 KG CENTAURO",
+      "precio": 14990,
+      "imagen": "https://tse1.mm.bing.net/th?id=OIP.XdlcSHdE6MESKe6avBHm5QAAAA&pid=Api&P=0&h=180",
+      "categoria_id": "3",
+      "marca_id": "5",
+      "stock": 100
+    },
+    {
+      "id": "5",
+      "nombre": "TANQUE BOTELLON 2000 LT POLIETILENO",
+      "descripcion": "TANQUE BOTELLON 2000 LT POLIETILENO",
+      "precio": 14990,
+      "imagen": "https://ferremas.com.py/storage/products/v1MT5pciVP1wiCmoSL4F4oJPeczTTRCz9q3ef8OL.jpg",
+      "categoria_id": "2",
+      "marca_id": "3",
+      "stock": 100
+    },
+    {
+      "id": "6",
+      "nombre": "TALADRO ATORNILLADOR A BATERIA 12V",
+      "descripcion": "TALADRO ATORNILLADOR A BATERIA 12V",
+      "precio": 29990,
+      "imagen": "https://tse4.mm.bing.net/th?id=OIP.SK9jnokBvTEEN5tlU2243QHaHa&pid=Api&P=0&h=180",
+      "categoria_id": "1",
+      "marca_id": "1",
+      "stock": 100
+    },
+    {
+      "id": "7",
+      "nombre": "AMOLADORA 840W",
+      "descripcion": "AMOLADORA 840W",
+      "precio": 24990,
+      "imagen": "https://www.segutecnica.com/thumb/000000000000000076371makita-9557hpg-amoladora-angular-115mm-840w-gatillo-paleta-segutecnica_800x800.png",
+      "categoria_id": "1",
+      "marca_id": "1",
+      "stock": 100
+    },
+    {
+      "id": "8",
+      "nombre": "SOPLADOR DE AIRE 600W",
+      "descripcion": "SOPLADOR DE AIRE 600W",
+      "precio": 19990,
+      "imagen": "https://aritrans.cl/wp-content/uploads/2022/03/soplador-aire-electrico-ub1103-makita-1.jpg",
+      "categoria_id": "1",
+      "marca_id": "1",
+      "stock": 100
+    },
+    {
+      "id": "9",
+      "nombre": "SIERRA CIRCULAR MAN 1800W",
+      "descripcion": "SIERRA CIRCULAR MAN 1800W",
+      "precio": 49990,
+      "imagen": "https://www.tiendamakita.com.mx/wp-content/uploads/2021/05/HS0600.jpg",
+      "categoria_id": "1",
+      "marca_id": "1",
+      "stock": 100
+    }
+  ],
+  "marca": [
+    {
+      "id": "1",
+      "nombre": "MAKITA"
+    },
+    {
+      "id": "2",
+      "nombre": "TOPEX"
+    },
+    {
+      "id": "3",
+      "nombre": "GENERICO"
+    },
+    {
+      "id": "4",
+      "nombre": "PLAVICON"
+    },
+    {
+      "id": "5",
+      "nombre": "CENTAURO"
+    },
+    {
+      "id": "6",
+      "nombre": "WURTH"
+    }
+  ],
+  "categoria": [
+    {
+      "id": "1",
+      "nombre": "HERRAMIENTAS"
+    },
+    {
+      "id": "2",
+      "nombre": "CONSTRUCCION"
+    },
+    {
+      "id": "3",
+      "nombre": "ADHESIVO"
+    }
+  ]
 }

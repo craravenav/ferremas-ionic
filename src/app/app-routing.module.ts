@@ -38,12 +38,13 @@ const routes: Routes = [
   {
     path: 'recuperar',
     loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarPageModule)
-  },  {
+  },
+  {
     path: 'producto-add',
     loadChildren: () => import('./services/producto/producto-add/producto-add.module').then( m => m.ProductoAddPageModule)
   },
   {
-    path: 'producto-edit',
+    path: 'producto-edit/:id',
     loadChildren: () => import('./services/producto/producto-edit/producto-edit.module').then( m => m.ProductoEditPageModule)
   },
   {
@@ -74,6 +75,14 @@ const routes: Routes = [
     path: 'categoria-all',
     loadChildren: () => import('./services/categoria/categoria-all/categoria-all.module').then( m => m.CategoriaAllPageModule)
   },
+  {
+    path: 'producto-list',
+    loadChildren: () => import('./services/producto/producto-list/producto-list.module').then( m => m.ProductoListPageModule)
+  },  {
+    path: 'producto-delete',
+    loadChildren: () => import('./services/producto/producto-delete/producto-delete.module').then( m => m.ProductoDeletePageModule)
+  },
+
 
 ];
 

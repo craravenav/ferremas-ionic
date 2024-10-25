@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ProductoAddPageRoutingModule } from './producto-add-routing.module';
 
 import { ProductoAddPage } from './producto-add.page';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductoAddPageRoutingModule
+    ProductoAddPageRoutingModule,
+    ReactiveFormsModule,   
   ],
   declarations: [ProductoAddPage]
 })

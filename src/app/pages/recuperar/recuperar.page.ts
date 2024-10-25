@@ -24,7 +24,6 @@ export class RecuperarPage {
       const email = this.recuperarForm.get('email')?.value;
       if (email) {
         // Aca se debe implementar logica de como recuperar la contraseña
-        console.log('Correo para restablecer contraseña:', email);
         // Redirige al usuario o muestra un mensaje de éxito
         this.navCtrl.navigateForward('/login');
       }

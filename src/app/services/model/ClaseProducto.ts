@@ -1,25 +1,22 @@
 export class ClaseProducto {
-    // si no Inicializo los valores, da Error
-    // Por eso es el constructor por obligación
-    id: number;
+    id: string;
     nombre: string;
     descripcion: string;
     precio: number;
     imagen: string;
     categoria_id: number;
-    marca_id:number;
+    marca_id: number;
     stock: number;
-  
-    // si no Inicializo los valores, da Error
-    constructor(obj: any){
-        this.id = obj && obj.id || null
-        this.nombre = obj && obj.nombre || null
-        this.descripcion = obj && obj.descripcion || null
-        this.precio = obj && obj.precio || null
-        this.imagen = obj && obj.imagen || null
-        this.categoria_id = obj && obj.categoria_id || null
-        this.marca_id  = obj && obj.marca_id || null
-        this.stock  = obj && obj.stock || null
+
+    constructor(obj: any = {}) {
+        // Inicializamos valores con obj si existe, de lo contrario con valores por defecto
+        this.id = obj.id || 0; // Usamos 0 como valor por defecto para `id`
+        this.nombre = obj.nombre || ''; // Cadena vacía como valor por defecto
+        this.descripcion = obj.descripcion || '';
+        this.precio = obj.precio || 0; // Precio predeterminado 0
+        this.imagen = obj.imagen || '';
+        this.categoria_id = obj.categoria_id || 0;
+        this.marca_id = obj.marca_id || 0;
+        this.stock = obj.stock || 0;
     }
 }
-  

@@ -1,4 +1,4 @@
-export class ClaseProducto {
+export class ClaseMarca {
     // si no Inicializo los valores, da Error
     // Por eso es el constructor por obligación
     id: number;
