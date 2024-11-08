@@ -66,7 +66,8 @@ const routes: Routes = [
   },
   {
     path: 'producto-list',
-    loadChildren: () => import('./services/producto/producto-list/producto-list.module').then( m => m.ProductoListPageModule)
+    loadChildren: () => import('./services/producto/producto-list/producto-list.module').then( m => m.ProductoListPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'producto-delete',

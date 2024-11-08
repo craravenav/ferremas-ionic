@@ -41,16 +41,6 @@
       "stock": 100
     },
     {
-      "id": "5",
-      "nombre": "TANQUE BOTELLON 2000 LT POLIETILENO",
-      "descripcion": "TANQUE BOTELLON 2000 LT POLIETILENO",
-      "precio": 14990,
-      "imagen": "https://ferremas.com.py/storage/products/v1MT5pciVP1wiCmoSL4F4oJPeczTTRCz9q3ef8OL.jpg",
-      "categoria_id": "2",
-      "marca_id": "3",
-      "stock": 100
-    },
-    {
       "id": "6",
       "nombre": "TALADRO ATORNILLADOR A BATERIA 12V",
       "descripcion": "TALADRO ATORNILLADOR A BATERIA 12V",
@@ -88,6 +78,16 @@
       "imagen": "https://www.tiendamakita.com.mx/wp-content/uploads/2021/05/HS0600.jpg",
       "categoria_id": "1",
       "marca_id": "1",
+      "stock": 100
+    },
+    {
+      "id": "10",
+      "nombre": "Producto Nuevo",
+      "descripcion": "Descripcion",
+      "precio": 100000,
+      "imagen": "https://www.ciminvestigacion.com/wp-content/uploads/2019/10/test-de-mercado.jpg",
+      "categoria_id": 0,
+      "marca_id": 0,
       "stock": 100
     }
   ],

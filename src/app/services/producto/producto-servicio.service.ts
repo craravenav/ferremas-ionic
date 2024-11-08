@@ -7,7 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 // creamos Constantes que utilizaremos en el envio
-const apiUrl = "http://localhost:3000/productos";
+const apiUrl = "https://a27344595599472769ba1388312a0bfd.serveo.net/productos";
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -75,11 +75,11 @@ updateProduct(id: number, producto: ClaseProducto): Observable<ClaseProducto> {
 }
 
 getMarcas() {
-  return this.http.get<any[]>('http://localhost:3000/marca'); // La URL de tu JSON Server para marcas
+  return this.http.get<any[]>('https://a27344595599472769ba1388312a0bfd.serveo.net/marca'); // La URL de tu JSON Server para marcas
 }
 
 getCategorias() {
-  return this.http.get<any[]>('http://localhost:3000/categoria'); // La URL de tu JSON Server para categorías
+  return this.http.get<any[]>('https://a27344595599472769ba1388312a0bfd.serveo.net/categoria'); // La URL de tu JSON Server para categorías
 }
 
 }

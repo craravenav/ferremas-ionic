@@ -1,8 +1,11 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { IonModal, AnimationController, MenuController, ToastController } from '@ionic/angular';
 import { Animation } from '@ionic/core';
 import { AuthService } from 'src/app/services/auth.service'; // Importa el servicio de autenticación
+import { ClaseProducto } from '../../services/model/ClaseProducto';
+import { ProductoServicioService } from '../../services/producto/producto-servicio.service';
 
 @Component({
   selector: 'app-tienda',
@@ -16,13 +19,18 @@ export class TiendaPage implements AfterViewInit {
   email!: string;
   password!: string;
   usuario!: string;
+  productos: ClaseProducto[] = [];
+  productoSeleccionado: any;
 
   constructor(
     private router: Router,
     private animationCtrl: AnimationController,
     private menuCtrl: MenuController,
     private toastController: ToastController,
-    private authService: AuthService // Inyecta el servicio de autenticación
+    private authService: AuthService, // Inyecta el servicio de autenticación
+    public restApi: ProductoServicioService,
+    public loadingController: LoadingController,
+    private alertController: AlertController
   ) {
     // Obtiene los datos del estado de navegación si existen
     if (this.router.getCurrentNavigation()?.extras.state) {
@@ -34,6 +42,7 @@ export class TiendaPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.getProducts();
     this.cargarDatosUsuario(); // Llama a la función para cargar los datos del usuario
     if (this.modal) {
       const enterAnimation = (baseEl: HTMLElement) => {
@@ -82,6 +91,15 @@ export class TiendaPage implements AfterViewInit {
     }
   }
 
+  openModal(producto: any) {
+    this.productoSeleccionado = producto; // Almacena los datos del producto
+    if (this.modal) {
+      this.modal.present(); // Abre el modal
+    } else {
+      console.error('Modal is undefined');
+    }
+  }
+
   cargarDatosUsuario() {
     // Obtiene el usuario autenticado desde el servicio de autenticación
     const usuarioActual = this.authService.getUsuarioActual();
@@ -112,6 +130,30 @@ export class TiendaPage implements AfterViewInit {
     };
     this.menuCtrl.close();
     this.router.navigate(['/carrito'], navigationExtras);
+  }
+
+  // Método  que rescta los productos
+  async getProducts() {
+    // Crea un Wait (Esperar)
+    const loading = await this.loadingController.create({
+      message: 'Cargando...'
+    });
+    // Muestra el Wait
+    await loading.present();
+    // Obtiene el Observable del servicio
+    await this.restApi.getProducts()
+      .subscribe({
+        next: (res) => { 
+  // Si funciona asigno el resultado al arreglo productos
+          this.productos = res;
+          loading.dismiss();
+        }
+        , complete: () => { }
+        , error: (err) => {
+          loading.dismiss();
+        }
+    })
+
   }
 
   openSideCategoria() {
