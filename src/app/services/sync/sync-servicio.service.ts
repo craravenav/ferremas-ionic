@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Network } from '@capacitor/network';
-import { AuthService } from '../auth.service'; // Importa el servicio AuthService
+import { AuthService } from '../auth.service'; 
+import { interval } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ export class SyncService {
 
   constructor(private authService: AuthService) {
     this.monitorNetwork();
+    this.syncOnceOnStart();
   }
 
   // Monitorea el estado de la red
@@ -20,21 +22,15 @@ export class SyncService {
     Network.addListener('networkStatusChange', (status) => {
       this.isConnected = status.connected;
       if (this.isConnected) {
-        this.sincronizarUsuarios();
+        this.authService.sincronizarUsuarios();
       }
     });
   }
 
-  // Sincroniza los usuarios no sincronizados
-  private async sincronizarUsuarios() {
-    const usuariosPendientes = await this.authService.obtenerUsuariosNoSincronizados();
-
-    for (const usuario of usuariosPendientes) {
-      const exito = await this.authService.guardarEnJsonServer(usuario);
-      if (exito) {
-        await this.authService.marcarComoSincronizado(usuario.id);
-        console.log(`Usuario ${usuario.id} sincronizado correctamente.`);
-      }
+  private syncOnceOnStart() {
+    if (this.isConnected) {
+      this.authService.sincronizarUsuarios();  
     }
   }
+
 }

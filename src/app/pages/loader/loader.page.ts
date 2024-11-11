@@ -25,6 +25,9 @@ export class LoaderPage implements OnInit {
 
     if (!status.connected) {
       this.showNoConnectionAlert();
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 4000); // 4000ms = 4 segundos
     } else {
       // Si hay conexión, redirige al login después de 4 segundos
       setTimeout(() => {

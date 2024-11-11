@@ -130,5 +130,16 @@
       "id": "3",
       "nombre": "ADHESIVO"
     }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Admin",
+      "apellido": "Apellido",
+      "email": "admin@gmail.com",
+      "password": "Asd123456",
+      "sincronizado": 1,
+      "id_sqlite": 1
+    }
   ]
 }
