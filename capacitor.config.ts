@@ -5,6 +5,11 @@ const config: CapacitorConfig = {
   appName: 'Ferremas',
   webDir: 'www',
   bundledWebRuntime: false,
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 0, // Desactiva el splash para pruebas rápidas
+    },
+  },
 };
 
 export default config;

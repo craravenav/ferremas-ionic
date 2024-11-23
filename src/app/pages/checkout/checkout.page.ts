@@ -20,7 +20,8 @@ export class CheckoutPage implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     // Inicializamos el mapa con coordenadas por defecto
-    this.center = { lat: 37.7749, lng: -122.4194 }; // Coordenadas por defecto (San Francisco)
+    // Coordenadas por defecto (DUOC PLAZA NORTE)
+    this.center = { lat: -33.36344, lng: -70.6807601 }; 
     this.options = {
       mapTypeId: 'roadmap',
       zoomControl: true,

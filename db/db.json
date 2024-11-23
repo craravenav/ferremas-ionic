@@ -89,6 +89,16 @@
       "categoria_id": 0,
       "marca_id": 0,
       "stock": 100
+    },
+    {
+      "id": "11",
+      "nombre": "Produc",
+      "descripcion": "sdffgdfd",
+      "precio": 10000,
+      "imagen": "https://th.bing.com/th/id/R.60fae3cbbfd2383a8c5f26b4cfe24e7f?rik=%2bmTcpqR1X%2fUHLA&pid=ImgRaw&r=0",
+      "categoria_id": "3",
+      "marca_id": "3",
+      "stock": 10
     }
   ],
   "marca": [
@@ -140,6 +150,15 @@
       "password": "Asd123456",
       "sincronizado": 1,
       "id_sqlite": 1
+    },
+    {
+      "id": "2",
+      "nombre": "Tfuentes",
+      "apellido": "Tfuentes",
+      "email": "tfuentes@tfuentes.cl",
+      "password": "Asd123456",
+      "sincronizado": 1,
+      "id_sqlite": 2
     }
   ]
 }
