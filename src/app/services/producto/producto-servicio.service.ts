@@ -7,7 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 // creamos Constantes que utilizaremos en el envio
-const apiUrl = "https://287aff74174850d2656b1832ecc9507e.serveo.net/productos";
+const apiUrl = "https://ferremasdb.onrender.com/productos";
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -75,11 +75,11 @@ updateProduct(id: number, producto: ClaseProducto): Observable<ClaseProducto> {
 }
 
 getMarcas() {
-  return this.http.get<any[]>('https://287aff74174850d2656b1832ecc9507e.serveo.net/marca'); // La URL de tu JSON Server para marcas
+  return this.http.get<any[]>('https://ferremasdb.onrender.com/marca'); // La URL de tu JSON Server para marcas
 }
 
 getCategorias() {
-  return this.http.get<any[]>('https://287aff74174850d2656b1832ecc9507e.serveo.net/categoria'); // La URL de tu JSON Server para categorías
+  return this.http.get<any[]>('https://ferremasdb.onrender.com/categoria'); // La URL de tu JSON Server para categorías
 }
 
 }

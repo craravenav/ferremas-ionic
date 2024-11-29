@@ -21,7 +21,7 @@ interface Usuario {
 export class AuthService {
   private sqliteConnection!: SQLiteConnection;
   private db: SQLiteDBConnection | null = null;
-  private jsonServerUrl = 'https://287aff74174850d2656b1832ecc9507e.serveo.net/usuarios';
+  private jsonServerUrl = 'https://ferremasdb.onrender.com/usuarios';
   private usuarioActual: Usuario | null = null;
 
   constructor(private http: HttpClient) {
