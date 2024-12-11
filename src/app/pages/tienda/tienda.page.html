@@ -69,7 +69,13 @@
     </ion-toolbar>
     <!-- Barra de busqueda de productos -->
     <ion-toolbar color="primary">
-      <ion-searchbar class="NavbarSearch" animated="true" placeholder="Buscar Producto" ></ion-searchbar>
+      <ion-searchbar 
+  class="NavbarSearch" 
+  animated="true" 
+  placeholder="Buscar Producto"
+  [(ngModel)]="searchTerm"
+  (ionInput)="filtrarProductos()">
+</ion-searchbar>
     </ion-toolbar>
     <!-- Subheader -->
     <ion-toolbar class="NavbarCategorias">
@@ -91,7 +97,7 @@
   <ion-content [fullscreen]="true">
       
     <ion-row>
-      <ion-col size="6" *ngFor="let p of productos">
+      <ion-col size="6" *ngFor="let p of productosFiltrados">
         <ion-card class="producto-card">
           <ion-thumbnail>
             <img [src]="p.imagen">

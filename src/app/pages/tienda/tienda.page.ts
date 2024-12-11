@@ -21,6 +21,8 @@ export class TiendaPage implements AfterViewInit {
   usuario!: string;
   productos: ClaseProducto[] = [];
   productoSeleccionado: any;
+  productosFiltrados: ClaseProducto[] = [];
+  searchTerm: string = ''; 
 
   constructor(
     private router: Router,
@@ -146,6 +148,7 @@ export class TiendaPage implements AfterViewInit {
         next: (res) => { 
   // Si funciona asigno el resultado al arreglo productos
           this.productos = res;
+          this.productosFiltrados = [...this.productos];
           loading.dismiss();
         }
         , complete: () => { }
@@ -155,6 +158,22 @@ export class TiendaPage implements AfterViewInit {
     })
 
   }
+
+  filtrarProductos() {
+    const termino = this.searchTerm.toLowerCase().trim();
+  
+    if (!termino) {
+      // Si no hay término de búsqueda, muestra todos los productos
+      this.productosFiltrados = [...this.productos];
+      return;
+    }
+  
+    // Filtra los productos según el término de búsqueda
+    this.productosFiltrados = this.productos.filter(producto =>
+      producto.nombre.toLowerCase().includes(termino)
+    );
+  }
+
 
   openSideCategoria() {
     this.menuCtrl.open('side-categoria');
